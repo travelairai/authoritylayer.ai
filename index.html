@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AuthorityLayer.ai — Decision Authority Infrastructure</title>
+  <meta name="description" content="AuthorityLayer.ai is an acquisition-grade infrastructure concept: the authority layer that defines who can decide, what can be executed, and who is accountable end to end." />
+  <meta name="theme-color" content="#0b1020" />
+  <style>
+    :root{
+      --bg0:#070914;
+      --bg1:#0b1020;
+      --card:#0f1630;
+      --card2:#101a38;
+      --text:#e9ecff;
+      --muted:#a7b0d8;
+      --muted2:#7f89b9;
+      --line:rgba(255,255,255,.08);
+      --accent:#6ee7ff;
+      --accent2:#a78bfa;
+      --accent3:#34d399;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius:18px;
+      --radius2:26px;
+      --max:1100px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 18% 12%, rgba(167,139,250,.18), transparent 60%),
+        radial-gradient(900px 600px at 82% 18%, rgba(110,231,255,.16), transparent 55%),
+        radial-gradient(900px 700px at 55% 88%, rgba(52,211,153,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      line-height:1.45;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px;}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:10px 0 22px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; text-decoration:none;
+    }
+    .mark{
+      width:34px; height:34px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(167,139,250,.95));
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      position:relative;
+    }
+    .mark:after{
+      content:"";
+      position:absolute; inset:9px;
+      border-radius:10px;
+      background: rgba(11,16,32,.9);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .brand-title{
+      font-weight:720; letter-spacing:.2px;
+      display:flex; flex-direction:column; line-height:1.1;
+    }
+    .brand-title span{color:var(--muted); font-weight:520; font-size:12px; letter-spacing:.35px}
+    .chiprow{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .chip{
+      font-family:var(--mono);
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      white-space:nowrap;
+    }
+    .hero{
+      display:grid; grid-template-columns: 1.25fr .75fr;
+      gap:18px; align-items:stretch;
+      margin-top:6px;
+    }
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr; }
+      .chiprow{justify-content:flex-start}
+    }
+    .panel{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panel-inner{padding:26px 24px}
+    h1{
+      margin:0 0 10px;
+      font-size:42px;
+      letter-spacing:-.6px;
+      line-height:1.05;
+    }
+    @media (max-width: 520px){
+      h1{font-size:36px}
+    }
+    .lede{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      max-width: 62ch;
+    }
+    .cta{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight:650;
+      letter-spacing:.2px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18);}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(110,231,255,.22), rgba(167,139,250,.20));
+      border-color: rgba(110,231,255,.22);
+    }
+    .btn.primary:hover{border-color: rgba(110,231,255,.35)}
+    .metrics{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    .metric{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(15,22,48,.6);
+      padding:14px 14px;
+    }
+    .metric .k{
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--muted2);
+      margin-bottom:6px;
+    }
+    .metric .v{
+      font-size:14px; color:var(--muted);
+      margin:0;
+    }
+    .metric strong{color:var(--text); font-weight:720}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top:16px;
+    }
+    .card{
+      grid-column: span 6;
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      background: rgba(15,22,48,.55);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+    .card.small{grid-column: span 4;}
+    @media (max-width: 920px){
+      .card, .card.small{grid-column: span 12;}
+    }
+    .card .hd{
+      padding:18px 18px 0;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .card h2{
+      margin:0;
+      font-size:16px;
+      letter-spacing:.2px;
+    }
+    .tag{
+      font-family:var(--mono);
+      font-size:11px;
+      color:var(--muted2);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding:6px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+    .card .bd{padding:14px 18px 18px;}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    .bullets{margin:12px 0 0; padding:0; list-style:none; display:grid; gap:10px}
+    .bullets li{
+      display:flex; gap:10px;
+      padding:10px 10px;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius: 999px; margin-top:4px; flex:0 0 10px;
+      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(167,139,250,.95));
+      box-shadow: 0 0 0 3px rgba(110,231,255,.08);
+    }
+    .stack{
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      background: rgba(15,22,48,.45);
+      padding:16px 16px 14px;
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--muted);
+      overflow:auto;
+      line-height:1.6;
+    }
+    .stack .hl{color:var(--text)}
+    .section-title{
+      margin:30px 0 10px;
+      font-size:14px;
+      letter-spacing:.22px;
+      color:var(--muted);
+      text-transform:uppercase;
+    }
+    .foot{
+      margin-top:32px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .foot{grid-template-columns:1fr;}
+    }
+    form{
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+    label{font-size:12px; color:var(--muted2); letter-spacing:.2px}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(11,16,32,.55);
+      color: var(--text);
+      outline:none;
+      font-family:var(--sans);
+      font-size:14px;
+    }
+    textarea{min-height:120px; resize:vertical}
+    .fine{
+      font-size:12px; color:var(--muted2); margin-top:10px;
+    }
+    .hr{height:1px; background: var(--line); margin:22px 0 0;}
+    .copyright{margin-top:14px; color:var(--muted2); font-size:12px}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="#">
+        <div class="mark" aria-hidden="true"></div>
+        <div class="brand-title">
+          AuthorityLayer.ai
+          <span>decision authority • governance • execution continuity</span>
+        </div>
+      </a>
+      <div class="chiprow">
+        <div class="chip">Acquisition-grade positioning</div>
+        <div class="chip">Infrastructure, not a product</div>
+        <div class="chip">Available via Afternic</div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="panel">
+        <div class="panel-inner">
+          <h1>Where authority lives in autonomous systems.</h1>
+          <p class="lede">
+            AuthorityLayer.ai is the missing layer between intelligence and execution:
+            the infrastructure that defines who can decide, what can be executed, and who is accountable end to end.
+          </p>
+
+          <div class="cta">
+            <a class="btn primary" href="#inquiry">Inquire</a>
+            <a class="btn" href="#stack">How it fits the stack</a>
+            <a class="btn" href="#use">Use cases</a>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="section-title">Core thesis</div>
+          <ul class="bullets">
+            <li><span class="dot"></span><span><span class="hl">Intelligence scales faster than responsibility.</span> Without explicit authority, decisions drift and accountability dissolves.</span></li>
+            <li><span class="dot"></span><span><span class="hl">Execution is not value if it cannot be governed.</span> Autonomous actions require mandates, constraints, and escalation paths.</span></li>
+            <li><span class="dot"></span><span><span class="hl">Control compounds.</span> The authority layer survives model cycles, vendor churn, and organizational reshuffles.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <div class="metrics">
+            <div class="metric">
+              <div class="k">WHAT IT IS</div>
+              <p class="v"><strong>Decision authority infrastructure</strong> that binds mandates, permissions, and accountability to execution.</p>
+            </div>
+            <div class="metric">
+              <div class="k">WHY IT MATTERS</div>
+              <p class="v">Reduces variance by making decision ownership explicit before actions propagate across systems.</p>
+            </div>
+            <div class="metric">
+              <div class="k">WHO CARES</div>
+              <p class="v">Operators, CTOs, and investors who underwrite reliability, governance, and durable control.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" id="use">
+      <div class="card small">
+        <div class="hd">
+          <h2>Authority by design</h2>
+          <div class="tag">mandates</div>
+        </div>
+        <div class="bd">
+          <p>Define who can decide, under what conditions, and how decisions are audited and revised.</p>
+          <ul class="bullets">
+            <li><span class="dot"></span><span>Role-based mandates and bounded autonomy</span></li>
+            <li><span class="dot"></span><span>Escalation paths and human-in-the-loop triggers</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card small">
+        <div class="hd">
+          <h2>Execution continuity</h2>
+          <div class="tag">enforcement</div>
+        </div>
+        <div class="bd">
+          <p>Carry decisions through execution across tools, teams, and vendors, even as conditions change.</p>
+          <ul class="bullets">
+            <li><span class="dot"></span><span>Policy enforcement across systems</span></li>
+            <li><span class="dot"></span><span>Outcome accountability and drift detection</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card small">
+        <div class="hd">
+          <h2>Governance telemetry</h2>
+          <div class="tag">audit</div>
+        </div>
+        <div class="bd">
+          <p>Make authority observable: what was decided, by whom, with what evidence, and what changed.</p>
+          <ul class="bullets">
+            <li><span class="dot"></span><span>Decision logs, approvals, and overrides</span></li>
+            <li><span class="dot"></span><span>Compliance-ready audit trails</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="hd">
+          <h2>What this enables</h2>
+          <div class="tag">enterprise</div>
+        </div>
+        <div class="bd">
+          <p>
+            AuthorityLayer is the layer that makes autonomy investable:
+            it converts “smart actions” into governed outcomes, with clear ownership and bounded risk.
+          </p>
+          <ul class="bullets">
+            <li><span class="dot"></span><span>AI agents that operate within strict mandates, not vibes</span></li>
+            <li><span class="dot"></span><span>Cross-system execution where one layer owns the decision</span></li>
+            <li><span class="dot"></span><span>Variance reduction at scale through enforced accountability</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" id="stack">
+        <div class="hd">
+          <h2>How it fits a control stack</h2>
+          <div class="tag">architecture</div>
+        </div>
+        <div class="bd">
+          <p>
+            A simple mental model: governance sets intent, authority defines mandates, command orchestrates, motion executes.
+          </p>
+          <div class="stack" aria-label="stack diagram">
+<span class="hl">BoardAI</span>   → governance insight, risk posture, decision review
+<span class="hl">AuthorityLayer</span> → mandates, permissions, escalation, accountability boundaries
+<span class="hl">CommandAI</span> → orchestration across systems, routing, enforcement surface
+<span class="hl">MotionAI</span>  → execution layer, actions, workflows, physical/digital dispatch
+
+(Vertical intelligence layers like <span class="hl">TravelAir</span> / <span class="hl">HospitalityAI</span> plug into the stack as the domain context.)
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="hd">
+          <h2>Acquisition positioning</h2>
+          <div class="tag">availability</div>
+        </div>
+        <div class="bd">
+          <p>
+            AuthorityLayer.ai is positioned as a strategic infrastructure asset.
+            The name cleanly frames the authority problem in autonomous systems and enterprise decision-making.
+          </p>
+          <ul class="bullets">
+            <li><span class="dot"></span><span>Category-defining language for “who owns the decision”</span></li>
+            <li><span class="dot"></span><span>Enterprise-grade, model-agnostic framing</span></li>
+            <li><span class="dot"></span><span>Available for acquisition via Afternic</span></li>
+          </ul>
+          <p class="fine">
+            Note: This page is intentionally restrained. No hype, no demos. This is positioning for serious buyers.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot" id="inquiry">
+      <div class="panel">
+        <div class="panel-inner">
+          <div class="section-title">Inquiry</div>
+          <p class="lede" style="margin-bottom:0">
+            If you are evaluating AuthorityLayer.ai for acquisition, partnership, or portfolio consolidation, use the form below.
+          </p>
+
+          <form action="https://formspree.io/f/xnjjngql" method="POST">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div>
+              <label for="company">Company (optional)</label>
+              <input id="company" name="company" type="text" autocomplete="organization" />
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="What are you evaluating? Acquisition, partnership, integration, or something else?"></textarea>
+            </div>
+
+            <input type="hidden" name="domain" value="authoritylayer.ai" />
+            <input type="hidden" name="source" value="landing-page" />
+            <button class="btn primary" type="submit">Send inquiry</button>
+          </form>
+
+          <div class="fine">
+            By submitting, you agree to be contacted regarding this domain. No mailing lists. No noise.
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <div class="section-title">Definition</div>
+          <ul class="bullets" style="margin-top:10px">
+            <li><span class="dot"></span><span><span class="hl">Authority</span> is permission to decide and responsibility for outcomes.</span></li>
+            <li><span class="dot"></span><span><span class="hl">A layer</span> is infrastructure that survives tools, teams, and model cycles.</span></li>
+            <li><span class="dot"></span><span>The authority layer is where autonomy becomes governable and investable.</span></li>
+          </ul>
+
+          <div class="hr"></div>
+
+          <div class="section-title">Contact</div>
+          <p class="lede" style="margin:0">
+            Prefer email? Use the form for fastest routing.
+          </p>
+
+          <p class="copyright">
+            © <span id="y"></span> AuthorityLayer.ai • All rights reserved
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
