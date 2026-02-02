@@ -1,4 +1,4 @@
-<!doctype html>
+[10:22 PM, 2/1/2026] .: <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -19,21 +19,44 @@
 
       --glass:rgba(255,255,255,.08);
       --glass2:rgba(255,255,255,.06);
-      --stroke:rgba(255,255,255,.16);
-      --stroke2:rgba(255,255,255,.11);
+      --strok…
+[10:26 PM, 2/1/2026] .: <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="AuthorityLayer.ai — Enterprise Authority & Governance Infrastructure. The decision authority layer that defines mandates, escalation, and accountability across autonomous and enterprise systems." />
+  <meta name="theme-color" content="#1f2933" />
+  <title>AuthorityLayer.ai — Enterprise Authority & Governance Infrastructure</title>
 
-      --accent:#c6a15b;
-      --accent2:#8b7355;
-      --chip:rgba(255,255,255,.10);
+  <style>
+    :root{
+      --bg0:#151b22;
+      --bg1:#1f2933;
+      --bg2:#27303a;
+
+      --ink:#eef3f8;
+      --muted:rgba(238,243,248,.78);
+      --muted2:rgba(238,243,248,.60);
+
+      --glass:rgba(255,255,255,.07);
+      --glass2:rgba(255,255,255,.05);
+      --stroke:rgba(255,255,255,.15);
+      --stroke2:rgba(255,255,255,.10);
+
+      /* Authority palette — slate / steel / governance */
+      --accent:#9fb4c7;
+      --accent2:#6f879b;
+      --chip:rgba(255,255,255,.09);
 
       --radius-xl:26px;
       --radius-lg:18px;
       --radius-md:14px;
 
-      --shadow: 0 18px 55px rgba(0,0,0,.35);
-      --shadow2: 0 12px 35px rgba(0,0,0,.28);
+      --shadow: 0 18px 55px rgba(0,0,0,.38);
+      --shadow2: 0 12px 35px rgba(0,0,0,.30);
 
-      --max: 1120px;
+      --max:1120px;
     }
 
     *{box-sizing:border-box}
@@ -43,179 +66,119 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--ink);
       background:
-        radial-gradient(900px 500px at 16% 10%, rgba(198,161,91,.28), transparent 60%),
-        radial-gradient(700px 420px at 78% 18%, rgba(139,115,85,.22), transparent 62%),
-        radial-gradient(620px 420px at 70% 78%, rgba(120,95,60,.12), transparent 58%),
+        radial-gradient(900px 520px at 18% 12%, rgba(159,180,199,.20), transparent 60%),
+        radial-gradient(700px 460px at 78% 22%, rgba(111,135,155,.18), transparent 62%),
+        radial-gradient(600px 420px at 72% 82%, rgba(130,150,165,.10), transparent 58%),
         linear-gradient(180deg, var(--bg0), var(--bg1) 45%, var(--bg2));
       overflow-x:hidden;
     }
 
-    a{color:inherit; text-decoration:none}
-    .wrap{
-      width:min(var(--max), calc(100% - 40px));
-      margin:0 auto;
-      padding:34px 0 80px;
-    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(var(--max), calc(100% - 40px));margin:0 auto;padding:34px 0 80px}
 
     /* Header */
-    .top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:22px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:240px;
-    }
+    .top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+    .brand{display:flex;align-items:center;gap:14px;min-width:240px}
     .logo{
-      width:46px;height:46px;
-      border-radius:14px;
+      width:46px;height:46px;border-radius:14px;
       background:
-        radial-gradient(14px 14px at 30% 32%, rgba(255,235,200,.95), transparent 60%),
-        radial-gradient(20px 18px at 70% 70%, rgba(198,161,91,.80), transparent 60%),
-        radial-gradient(26px 20px at 55% 40%, rgba(139,115,85,.55), transparent 62%),
-        rgba(255,255,255,.10);
+        radial-gradient(18px 18px at 30% 30%, rgba(220,230,240,.9), transparent 60%),
+        radial-gradient(26px 22px at 70% 70%, rgba(159,180,199,.7), transparent 60%),
+        rgba(255,255,255,.12);
       border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      box-shadow:0 10px 26px rgba(0,0,0,.28);
       backdrop-filter: blur(10px);
     }
-    .brand h1{
-      font-size:18px;
-      line-height:1.15;
-      margin:0;
-      letter-spacing:.2px;
-    }
-    .brand p{
-      margin:3px 0 0;
-      color:var(--muted2);
-      font-size:13.2px;
-    }
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:3px 0 0;color:var(--muted2);font-size:13.2px}
 
-    .nav{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .nav a{
-      font-size:13.5px;
-      color:rgba(244,239,233,.82);
-      padding:8px 10px;
-      border-radius:10px;
-    }
-    .nav a:hover{
-      background:rgba(255,255,255,.08);
-      color:rgba(255,255,255,.94);
-    }
+    .nav{display:flex;gap:18px;flex-wrap:wrap}
+    .nav a{font-size:13.5px;color:var(--muted);padding:8px 10px;border-radius:10px}
+    .nav a:hover{background:rgba(255,255,255,.08);color:#fff}
 
     /* Badge */
     .badgeRow{display:flex;gap:10px;margin:18px 0}
     .badge{
-      display:inline-flex;align-items:center;gap:10px;
+      display:inline-flex;gap:10px;align-items:center;
       padding:12px 14px;border-radius:999px;
       background:rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(14px);
     }
     .badge .dot{
       width:10px;height:10px;border-radius:999px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), rgba(198,161,91,.85));
-      box-shadow:0 0 0 6px rgba(198,161,91,.12);
+      background:var(--accent);
+      box-shadow:0 0 0 6px rgba(159,180,199,.15);
     }
-    .badge span{font-size:13.6px}
 
-    /* Main grid */
-    .grid{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:18px;
-    }
+    /* Grid */
+    .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
 
     .panel{
       background:var(--glass);
       border:1px solid var(--stroke);
       border-radius:var(--radius-xl);
       box-shadow:var(--shadow);
+      backdrop-filter: blur(18px);
     }
 
-    .heroCard{padding:22px}
+    .heroCard{padding:22px;position:relative}
     .chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
     .chip{
       background:var(--chip);
       border:1px solid var(--stroke2);
       padding:7px 10px;border-radius:999px;
-      font-size:12px;
+      font-size:12px;color:var(--muted);
     }
 
-    .title{
-      font-size:46px;
-      line-height:1.02;
-      letter-spacing:-.8px;
-      margin:0;
-    }
-    .lead{
-      margin:14px 0 0;
-      font-size:15.6px;
-      line-height:1.55;
-      max-width:58ch;
-    }
+    .title{margin:0;font-size:46px;line-height:1.02;letter-spacing:-.8px}
+    .lead{margin-top:14px;color:var(--muted);font-size:15.6px;line-height:1.55;max-width:58ch}
 
-    .ctaStack{display:flex;flex-direction:column;gap:10px;margin-top:18px;max-width:420px}
+    .ctaStack{display:flex;flex-direction:column;gap:10px;margin-top:18px;width:min(420px,100%)}
     .cta{
-      display:flex;justify-content:space-between;
+      display:flex;justify-content:space-between;align-items:center;
       padding:14px 16px;border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.16);
       background:rgba(255,255,255,.06);
-      font-weight:600;
+      cursor:pointer;
     }
     .cta.primary{
-      background:linear-gradient(135deg, rgba(198,161,91,.85), rgba(139,115,85,.80));
+      background:linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#0b1116;font-weight:700;
     }
 
     .stack{display:flex;flex-direction:column;gap:18px}
     .card{
       padding:18px;border-radius:var(--radius-xl);
-      background:rgba(255,255,255,.07);
-      border:1px solid rgba(255,255,255,.14);
-    }
-    .kicker h3{
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      margin:0 0 10px;
-    }
-    .bullets{list-style:none;padding:0;margin:12px 0 0}
-    .bullets li{
-      padding:10px 12px;
-      border-radius:14px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.10);
-      margin-bottom:10px;
-    }
-
-    section{margin-top:22px}
-    .sectionGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .sectionCard{
-      padding:18px;border-radius:var(--radius-xl);
       background:rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.14);
     }
-    .sectionCard h4{
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      margin:0 0 10px;
+    .card h3{margin:0 0 10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+    .card p{margin:0;font-size:14.2px;line-height:1.55;color:var(--muted)}
+
+    .bullets{margin-top:12px;list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+    .bullets li{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10)}
+
+    .sectionGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+    .sectionCard{padding:18px;border-radius:var(--radius-xl);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14)}
+
+    .contact{margin-top:22px;padding:18px;border-radius:var(--radius-xl);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14)}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .full{grid-column:1/-1}
+    input,select,textarea{
+      width:100%;padding:12px;border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.18);color:#fff;
+    }
+    textarea{min-height:120px}
+
+    .submit{
+      background:linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#0b1116;font-weight:700;
+      padding:14px;border-radius:14px;border:none;
     }
 
-    .contact{margin-top:22px;padding:18px;border-radius:var(--radius-xl);background:rgba(255,255,255,.07)}
-    form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
-    .full{grid-column:1/-1}
-
-    .foot{margin-top:26px;font-size:12.5px;display:flex;justify-content:space-between}
+    .foot{margin-top:26px;font-size:12.5px;color:var(--muted2)}
 
     @media(max-width:980px){
       .grid{grid-template-columns:1fr}
@@ -226,119 +189,118 @@
 </head>
 
 <body>
-  <div class="wrap">
-    <header class="top">
-      <div class="brand">
-        <div class="logo"></div>
-        <div>
-          <h1>AuthorityLayer.ai</h1>
-          <p>Enterprise Authority & Governance Infrastructure</p>
-        </div>
-      </div>
+<div class="wrap">
 
-      <nav class="nav">
-        <a href="#problem">Enterprise Problem</a>
-        <a href="#solution">Solution</a>
-        <a href="#positioning">Platform Positioning</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <div class="badgeRow">
-      <div class="badge">
-        <span class="dot"></span>
-        <span><b>Authority</b> — not automation</span>
-      </div>
+<header class="top">
+  <div class="brand">
+    <div class="logo"></div>
+    <div>
+      <h1>AuthorityLayer.ai</h1>
+      <p>Enterprise Authority & Governance Infrastructure</p>
     </div>
+  </div>
+  <nav class="nav">
+    <a href="#problem">Enterprise Problem</a>
+    <a href="#solution">Solution</a>
+    <a href="#positioning">Platform Positioning</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-    <main class="grid">
-      <section class="panel heroCard">
-        <div class="chips">
-          <span class="chip">Enterprise governance</span>
-          <span class="chip">Decision authority</span>
-          <span class="chip">Private asset</span>
-        </div>
+<div class="badgeRow">
+  <div class="badge"><span class="dot"></span><span>Authority — not automation</span></div>
+</div>
 
-        <h2 class="title">Enterprise Authority<br/>Infrastructure</h2>
-
-        <p class="lead">
-          A <b>control layer</b> that defines who can decide, what can execute, and who is accountable
-          across autonomous and enterprise systems.
-        </p>
-
-        <div class="ctaStack">
-          <div class="cta primary">Strategic Inquiries →</div>
-          <div class="cta">Governance Use Cases →</div>
-          <div class="cta">Platform Positioning →</div>
-        </div>
-      </section>
-
-      <aside class="stack">
-        <section class="card">
-          <div class="kicker"><h3>THE SOLUTION</h3></div>
-          <p>
-            AuthorityLayer.ai sits above intelligence and execution layers to enforce mandates,
-            escalation paths, and accountability.
-          </p>
-          <ul class="bullets">
-            <li>Explicit decision ownership</li>
-            <li>Escalation and override logic</li>
-            <li>Auditability by design</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <div class="kicker"><h3>ENTERPRISE USE CASES</h3></div>
-          <ul class="bullets">
-            <li>Governance for autonomous systems</li>
-            <li>Enterprise approval and control layers</li>
-            <li>Regulated execution environments</li>
-          </ul>
-        </section>
-      </aside>
-    </main>
-
-    <section class="sectionGrid">
-      <div class="sectionCard">
-        <h4>THE ENTERPRISE PROBLEM</h4>
-        <p>
-          Automation without authority creates risk, drift, and failure at scale.
-        </p>
-      </div>
-
-      <div class="sectionCard">
-        <h4>PLATFORM POSITIONING</h4>
-        <p>
-          AuthorityLayer.ai is infrastructure for control, not prediction or automation.
-        </p>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <h3>CONTACT</h3>
-      <form action="https://formspree.io/f/xnjjngql" method="POST">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="you@company.com" required />
-        <input type="text" name="company" placeholder="Company / organization" />
-        <input type="text" name="role" placeholder="Title / role" />
-        <select class="full" name="inquiry_type">
-          <option>Strategic partnership</option>
-          <option>Enterprise platform integration</option>
-          <option>Acquisition discussion</option>
-        </select>
-        <textarea class="full" name="message" placeholder="Describe the governance or authority problem you are solving."></textarea>
-        <button class="full">Send inquiry →</button>
-      </form>
-    </section>
-
-    <footer class="foot">
-      <div>©️ <span id="y"></span> AuthorityLayer.ai — Privately owned.</div>
-      <div><a href="#top">Back to top</a></div>
-    </footer>
+<main class="grid">
+<section class="panel heroCard">
+  <div class="chips">
+    <span class="chip">Enterprise governance</span>
+    <span class="chip">Decision authority</span>
+    <span class="chip">Private asset</span>
   </div>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <h2 class="title">Enterprise Authority<br/>Infrastructure</h2>
+
+  <p class="lead">
+    AuthorityLayer.ai is the <b>decision authority layer</b> that defines who can decide,
+    what may execute, and how accountability persists across autonomous and enterprise systems.
+  </p>
+
+  <div class="ctaStack">
+    <button class="cta primary">Strategic inquiries →</button>
+    <button class="cta">Governance use cases →</button>
+    <button class="cta">Platform positioning →</button>
+  </div>
+</section>
+
+<aside class="stack">
+  <div class="card">
+    <h3>THE SOLUTION</h3>
+    <p>
+      AuthorityLayer.ai sits above intelligence and execution layers to enforce mandates,
+      escalation paths, permissions, and accountability — before autonomy scales beyond control.
+    </p>
+    <ul class="bullets">
+      <li>Explicit decision ownership</li>
+      <li>Escalation and override logic</li>
+      <li>Auditability by design</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>ENTERPRISE USE CASES</h3>
+    <ul class="bullets">
+      <li>Governance for autonomous systems</li>
+      <li>Policy enforcement across agents</li>
+      <li>Decision accountability in regulated environments</li>
+    </ul>
+  </div>
+</aside>
+</main>
+
+<section class="sectionGrid">
+  <div class="sectionCard" id="problem">
+    <h4>THE ENTERPRISE PROBLEM</h4>
+    <p>
+      Automation without authority creates risk, drift, and failure at scale.
+      Intelligence accelerates decisions — but without governance, responsibility dissolves.
+    </p>
+  </div>
+
+  <div class="sectionCard" id="positioning">
+    <h4>PLATFORM POSITIONING</h4>
+    <p>
+      AuthorityLayer.ai is infrastructure for control — not prediction or automation.
+      It is the layer enterprises rely on to preserve accountability across systems.
+    </p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h3>CONTACT</h3>
+  <form action="https://formspree.io/f/xnjjngql" method="POST">
+    <input name="name" placeholder="Your name" required />
+    <input name="email" placeholder="you@company.com" required />
+    <input name="company" placeholder="Company / organization" />
+    <input name="role" placeholder="Title / role" />
+    <select class="full" name="type">
+      <option>Strategic partnership</option>
+      <option>Platform integration</option>
+      <option>Acquisition discussion</option>
+    </select>
+    <textarea class="full" name="message" placeholder="Describe the authority or governance problem you are solving." required></textarea>
+    <button class="submit full">Send inquiry</button>
+  </form>
+</section>
+
+<footer class="foot">
+  ©️ <span id="y"></span> AuthorityLayer.ai — Privately owned.
+</footer>
+
+</div>
+
+<script>
+document.getElementById("y").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
